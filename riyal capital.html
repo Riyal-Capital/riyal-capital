@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Riyal Capital – Global Fundraising & Distribution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Riyal Capital is a distribution-first capital advisory firm helping hedge funds, private equity and growth-stage companies reach institutional investors at scale." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.2);
+      --accent-soft-2: rgba(56,189,248,0.06);
+      --accent-strong: #0ea5e9;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148,163,184,0.35);
+      --card: rgba(15,23,42,0.96);
+      --success: #22c55e;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 28px 90px rgba(15,23,42,0.9);
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.96), #020617 65%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 40;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.98), rgba(2,6,23,0.85), transparent);
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(56,189,248,0.85));
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.84rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.7rem;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      padding-bottom: 0.12rem;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: linear-gradient(to right, var(--accent), var(--accent-strong));
+      transition: width 0.22s ease-out;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .nav-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 0.3rem 0.85rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 60%);
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.35rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      box-shadow: 0 22px 55px rgba(56,189,248,0.7);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 26px 70px rgba(56,189,248,0.85);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.35rem;
+      font-size: 0.86rem;
+      font-weight: 500;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.96);
+      color: var(--text);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15,23,42,1);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6.2rem 0 4.5rem;
+      overflow: hidden;
+      color: var(--text);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(56,189,248,0.35) 0, transparent 55%),
+        linear-gradient(to bottom, rgba(2,6,23,0.15), rgba(2,6,23,0.85)),
+        url("hero-skyline.jpg") center/cover no-repeat;
+      filter: saturate(1.15) contrast(1.05);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to right, rgba(2,6,23,0.95) 0%, rgba(2,6,23,0.8) 50%, rgba(15,23,42,0.7) 100%),
+        radial-gradient(circle at bottom right, rgba(30,64,175,0.75), transparent 60%);
+      mix-blend-mode: multiply;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.24rem 0.8rem 0.24rem 0.38rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.3), transparent 60%);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e, #15803d);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #e5e7eb, #7dd3fc, #0ea5e9);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.7rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-top: 1.2rem;
+    }
+
+    .hero-meta strong {
+      display: block;
+      color: #e5e7eb;
+      font-size: 1.06rem;
+    }
+
+    .hero-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.6rem 1.5rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.22), rgba(15,23,42,0.96));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-panel-title {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-panel-line {
+      font-size: 1.04rem;
+      font-weight: 600;
+      max-width: 15rem;
+    }
+
+    .hero-panel-tag {
+      border-radius: var(--radius-pill);
+      padding: 0.2rem 0.9rem;
+      border: 1px solid rgba(148,163,184,0.55);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #e5e7eb;
+      background: rgba(15,23,42,0.9);
+    }
+
+    .panel-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .panel-metric {
+      border-radius: 13px;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.98);
+    }
+
+    .panel-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.08rem;
+    }
+
+    .panel-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .panel-caption {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .hero-panel-footer {
+      margin-top: 0.9rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(148,163,184,0.6);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-panel-pill {
+      border-radius: var(--radius-pill);
+      padding: 0.2rem 0.7rem;
+      border: 1px solid rgba(34,197,94,0.7);
+      color: var(--success);
+      background: rgba(6,78,59,0.4);
+      font-size: 0.7rem;
+    }
+
+    /* GENERIC SECTIONS */
+
+    section {
+      padding: 4.2rem 0;
+    }
+
+    .section-header {
+      max-width: 40rem;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+      gap: 2.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .card li::before {
+      content: "▹";
+      color: var(--accent-strong);
+      display: inline-block;
+      width: 0.9rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .pill-small {
+      border-radius: var(--radius-pill);
+      padding: 0.18rem 0.75rem;
+      border: 1px solid rgba(148,163,184,0.45);
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: rgba(15,23,42,0.98);
+    }
+
+    /* SOLUTIONS */
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .solution-card {
+      border-radius: var(--radius-lg);
+      padding: 1.45rem 1.4rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background:
+        radial-gradient(circle at top left, var(--accent-soft-2), rgba(15,23,42,0.98));
+      font-size: 0.9rem;
+    }
+
+    .solution-chip {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .solution-title {
+      font-size: 1.08rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .solution-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .solution-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .solution-card li::before {
+      content: "•";
+      color: var(--accent-strong);
+      display: inline-block;
+      width: 0.85rem;
+    }
+
+    .solution-footer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .badge {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 0.1rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* TRACK RECORD */
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .deal-card {
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.1rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      font-size: 0.84rem;
+    }
+
+    .deal-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .deal-title {
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .deal-amount {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      color: #e5e7eb;
+    }
+
+    .deal-meta {
+      color: var(--muted);
+    }
+
+    /* PROCESS */
+
+    .process-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .steps {
+      display: grid;
+      gap: 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .step {
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      border: 1px dashed rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+    }
+
+    .step-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+      color: var(--muted);
+      margin-bottom: 0.08rem;
+    }
+
+    .step-title {
+      font-size: 0.98rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .step p {
+      font-size: 0.84rem;
+      color: #e5e7eb;
+    }
+
+    .process-card {
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.4rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), rgba(15,23,42,0.98));
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .process-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .process-card li::before {
+      content: "✓";
+      color: var(--success);
+      display: inline-block;
+      width: 0.9rem;
+    }
+
+    /* PRICING */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.7rem;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      font-size: 0.9rem;
+    }
+
+    .pricing-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .price-range {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .price-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .pricing-card li::before {
+      content: "▹";
+      color: var(--accent-strong);
+      display: inline-block;
+      width: 0.85rem;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      padding-bottom: 4.5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.05fr);
+      gap: 2.6rem;
+      align-items: flex-start;
+    }
+
+    form {
+      border-radius: var(--radius-xl);
+      padding: 1.6rem 1.7rem;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.98);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field {
+      margin-bottom: 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+      color: #e5e7eb;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.95);
+      background: rgba(15,23,42,0.98);
+      padding: 0.6rem 0.7rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.7);
+      background: #020617;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .form-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background:
+        radial-gradient(circle at top left, var(--accent-soft-2), rgba(15,23,42,0.98));
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    .contact-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      margin: 0.7rem 0 0.9rem;
+      font-size: 0.84rem;
+    }
+
+    .contact-card li::before {
+      content: "▹";
+      color: var(--accent-strong);
+      display: inline-block;
+      width: 0.85rem;
+    }
+
+    .contact-card dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 0.8rem;
+      margin-top: 0.7rem;
+      font-size: 0.84rem;
+    }
+
+    .contact-card dt {
+      color: var(--muted);
+    }
+
+    .contact-card dd {
+      margin: 0;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(15,23,42,1);
+      background: #020617;
+      padding: 1.7rem 0 2.1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer nav {
+      display: flex;
+      gap: 1.3rem;
+    }
+
+    footer nav a {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer nav a:hover {
+      color: #e5e7eb;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 6.6rem;
+      }
+
+      .hero-panel {
+        max-width: 460px;
+        margin: 0 auto;
+      }
+
+      .about-layout,
+      .process-layout,
+      .pricing-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .solutions-grid,
+      .track-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid {
+        gap: 2.3rem;
+      }
+
+      .hero-meta {
+        gap: 1.2rem;
+      }
+
+      .solutions-grid,
+      .track-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .panel-metrics {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      footer .wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrapper nav">
+      <a href="#top" class="logo" aria-label="Riyal Capital home">
+        <!-- Use your lion logo image here -->
+        <img src="logo-lion.png" alt="Riyal Capital lion logo" class="logo-img" />
+        <div>
+          <div class="logo-text-main">Riyal Capital</div>
+          <div class="logo-text-sub">Global Fund Distribution</div>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#track-record">Track record</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Fees</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <div class="nav-pill">Brisbane · Global mandates</div>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Book a triage call
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="wrapper hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Independent, distribution-first capital advisory</span>
+          </div>
+          <h1 class="hero-title">
+            Institutional access
+            <span class="highlight">for funds and private deals.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Riyal Capital partners with hedge funds, private equity firms and growth-stage companies to raise capital
+            and scale distribution using deep investor relationships, proprietary data and high-volume yet targeted outreach.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Schedule an introduction
+            </button>
+            <button class="btn-outline" onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">
+              View solutions
+            </button>
+          </div>
+          <p class="hero-note">
+            We keep the first call simple: understand your mandate, current efforts and 6–12 month objectives, then
+            decide together whether it makes sense to proceed.
+          </p>
+
+          <div class="hero-meta">
+            <div>
+              <strong>$100M+</strong>
+              transactions supported across funds and private mandates
+            </div>
+            <div>
+              <strong>50,000+</strong>
+              curated institutional and family office profiles
+            </div>
+            <div>
+              <strong>Multi-asset</strong>
+              hedge funds, private equity, growth and special situations
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Riyal Capital overview">
+          <div class="hero-panel-heading">
+            <div>
+              <div class="hero-panel-title">Riyal at a glance</div>
+              <div class="hero-panel-line">
+                A capital advisory firm built around global distribution.
+              </div>
+            </div>
+            <div class="hero-panel-tag">Fundraising & distribution</div>
+          </div>
+
+          <div class="panel-metrics">
+            <div class="panel-metric">
+              <div class="panel-label">Distribution power</div>
+              <div class="panel-value">1,000–2,000+</div>
+              <div class="panel-caption">targeted outbound touches per client, per day</div>
+            </div>
+            <div class="panel-metric">
+              <div class="panel-label">Institutional network</div>
+              <div class="panel-value">4,000+</div>
+              <div class="panel-caption">pensions, sovereign wealth funds, endowments and family offices</div>
+            </div>
+            <div class="panel-metric">
+              <div class="panel-label">Global reach</div>
+              <div class="panel-value">MENA · Asia · Europe · North America</div>
+              <div class="panel-caption">licensed representatives across key financial centres</div>
+            </div>
+          </div>
+
+          <div class="hero-panel-footer">
+            <span>Rooted in investment banking, focused today on funds and institutional capital raises.</span>
+            <span class="hero-panel-pill">Discovery-led engagements</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">About Riyal Capital</div>
+          <h2 class="section-title">A distribution engine for sophisticated capital.</h2>
+          <p class="section-description">
+            Riyal Capital began alongside one of Vancouver’s largest investment banks, supporting more than
+            $100 million in private transactions. Today we specialise in raising capital and originating deals for
+            managers and companies that require institutional-grade distribution, not just more introductions.
+          </p>
+        </div>
+
+        <div class="about-layout">
+          <article class="card">
+            <h3>What makes us different</h3>
+            <p>
+              We are designed from first principles as a distribution-first firm. That means deep relationships,
+              serious data infrastructure and the capacity to run campaigns at a scale most investment banks do not touch.
+            </p>
+            <ul>
+              <li>More than 4,000 personal institutional contacts globally.</li>
+              <li>Particular depth across the Middle East and Asia, with strong coverage in North America and Europe.</li>
+              <li>Software built over major data providers, plus in-house datasets for mandate-level targeting.</li>
+              <li>AI- and machine-learning-assisted list building and continual refinement.</li>
+              <li>High-volume yet tailored outbound, capable of reaching hundreds of thousands of investors.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill-small">Brisbane headquarters</span>
+              <span class="pill-small">Global coverage</span>
+              <span class="pill-small">Data-driven origination</span>
+              <span class="pill-small">Institutional relationships</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Who we work with</h3>
+            <ul>
+              <li>Hedge funds seeking institutional limited partners and broader distribution.</li>
+              <li>Private equity firms looking for consistent proprietary deal flow and investor access.</li>
+              <li>Growth and late-stage companies raising from institutional and accredited investors.</li>
+              <li>Specialist and alternative strategies that need globally diversified capital partners.</li>
+            </ul>
+            <p style="margin-top:0.7rem;">
+              Every engagement begins with a triage call to understand your story, your numbers and your objectives.
+              From there we recommend a clear path forward, or say directly if we are not the right partner.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section id="solutions">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">Solutions</div>
+          <h2 class="section-title">Mandates designed around your objectives.</h2>
+          <p class="section-description">
+            We operate across three core solution lines. Under each sits the same engine:
+            discovery, investor universe design and high-quality, high-volume distribution.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+          <article class="solution-card">
+            <div class="solution-chip">Fund distribution</div>
+            <h3 class="solution-title">Hedge Fund Distribution</h3>
+            <p class="solution-tagline">
+              Scale your limited partner base with institutional investors whose mandate matches your strategy,
+              liquidity and fee profile.
+            </p>
+            <ul>
+              <li>Structured discovery around fund structure, AUM, track record and fee model.</li>
+              <li>Access to our institutional network and a curated list of up to 50,000 targeted LPs.</li>
+              <li>Daily outbound through an investor relations team using phone and direct email.</li>
+              <li>Pre-qualification, meeting coordination and assistance through due diligence and negotiation.</li>
+            </ul>
+            <div class="solution-footer">
+              <span>For managers seeking institutional tickets and global diversification.</span>
+              <span class="badge">Hedge funds</span>
+            </div>
+          </article>
+
+          <article class="solution-card">
+            <div class="solution-chip">Deal origination</div>
+            <h3 class="solution-title">Private Equity Deal Flow</h3>
+            <p class="solution-tagline">
+              Build a consistent pipeline of off-market and lightly shopped deals that match your mandate.
+            </p>
+            <ul>
+              <li>Detailed definition of sector, size, geography and ownership profile.</li>
+              <li>Database-driven sourcing combined with targeted outreach to founders and owners.</li>
+              <li>Background briefs prepared before you speak to potential counterparties.</li>
+              <li>Support across negotiations, due diligence and transaction execution.</li>
+            </ul>
+            <div class="solution-footer">
+              <span>Used to support platforms such as North Star Equity Partners.</span>
+              <span class="badge">Private equity</span>
+            </div>
+          </article>
+
+          <article class="solution-card">
+            <div class="solution-chip">Capital advisory</div>
+            <h3 class="solution-title">Institutional Capital Raises</h3>
+            <p class="solution-tagline">
+              For companies and platforms seeking thoughtful, institutional and accredited capital globally.
+            </p>
+            <ul>
+              <li>Initial outreach to investors who have funded similar transactions.</li>
+              <li>Expanded campaigns to 10,000–20,000+ targeted investors across regions.</li>
+              <li>Sector-driven positioning, from clean technology to semiconductors and beyond.</li>
+              <li>Meeting scheduling, pitch preparation and negotiation support.</li>
+            </ul>
+            <div class="solution-footer">
+              <span>Best suited to raises of one million dollars and above.</span>
+              <span class="badge">Direct raises</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACK RECORD -->
+    <section id="track-record">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">Selected outcomes</div>
+          <h2 class="section-title">Experience across funds and private mandates.</h2>
+          <p class="section-description">
+            Members of the Riyal Capital team have supported mandates from clean technology to industrial
+            manufacturing, private equity platforms and emerging fund managers.
+          </p>
+        </div>
+
+        <div class="track-grid">
+          <article class="deal-card">
+            <div class="deal-label">Private equity</div>
+            <h3 class="deal-title">North Star Equity Partners</h3>
+            <div class="deal-amount">More than $200m in exit value supported</div>
+            <p class="deal-meta">
+              Delivered a consistent flow of otherwise unattainable deals within their target mandate, contributing to
+              transactions totalling over two hundred million dollars in exit value.
+            </p>
+          </article>
+
+          <article class="deal-card">
+            <div class="deal-label">Clean technology</div>
+            <h3 class="deal-title">Sky H2O</h3>
+            <div class="deal-amount">More than $100m in investor interest</div>
+            <p class="deal-meta">
+              Supported a United States-based atmospheric water technology company, with particular traction among
+              investors in the Middle East where the thesis is especially relevant.
+            </p>
+          </article>
+
+          <article class="deal-card">
+            <div class="deal-label">Cross-border transaction</div>
+            <h3 class="deal-title">Semiconductor facility</h3>
+            <div class="deal-amount">$32m manufacturing transaction</div>
+            <p class="deal-meta">
+              Assisted in a thirty-two million dollar semiconductor manufacturing deal in Malaysia with a Shanghai-based
+              investor group, aligning complex cross-border requirements.
+            </p>
+          </article>
+
+          <article class="deal-card">
+            <div class="deal-label">Hedge fund</div>
+            <h3 class="deal-title">Early-stage technology fund</h3>
+            <div class="deal-amount">$100m in new limited partner commitments</div>
+            <p class="deal-meta">
+              Helped an early-stage technology-focused manager onboard five institutional investors, with an average
+              ticket size of twenty million dollars each.
+            </p>
+          </article>
+
+          <article class="deal-card">
+            <div class="deal-label">Investment banking</div>
+            <h3 class="deal-title">Vancouver private transactions</h3>
+            <div class="deal-amount">More than $100m in completed deals</div>
+            <p class="deal-meta">
+              Before focusing on funds and capital raises, the team worked alongside one of Vancouver’s largest
+              investment banks on over one hundred million dollars of private business transactions.
+            </p>
+          </article>
+
+          <article class="deal-card">
+            <div class="deal-label">Multi-sector</div>
+            <h3 class="deal-title">Global investor introductions</h3>
+            <div class="deal-amount">More than $150m in introductions</div>
+            <p class="deal-meta">
+              Across multiple industries and deal stages, Riyal Capital has facilitated well over one hundred and fifty
+              million dollars in introductions to institutional and accredited investors worldwide.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">Process</div>
+          <h2 class="section-title">Structured, transparent and outcome-focused.</h2>
+          <p class="section-description">
+            Whether we are working with a hedge fund, a private equity firm or a company raise, the rhythm stays the
+            same: understand, design, distribute and close.
+          </p>
+        </div>
+
+        <div class="process-layout">
+          <div>
+            <div class="steps">
+              <article class="step">
+                <div class="step-label">Step one</div>
+                <h3 class="step-title">Triage call and mandate definition</h3>
+                <p>
+                  We start with a short call to hear your story in your own words. We cover current assets or
+                  target raise, investor base, fee structure and what you want to achieve over the next six to twelve
+                  months. We also discuss what you have already tried and why you are exploring alternatives now.
+                </p>
+              </article>
+
+              <article class="step">
+                <div class="step-label">Step two</div>
+                <h3 class="step-title">Investor universe and data build</h3>
+                <p>
+                  We define the investor groups that make the most sense for your mandate – for example sovereign
+                  wealth funds in the Gulf, multi-family offices in Europe or pensions in North America. We then build
+                  a curated universe using our Rolodex, consolidated databases and in-house tools.
+                </p>
+              </article>
+
+              <article class="step">
+                <div class="step-label">Step three</div>
+                <h3 class="step-title">Campaign launch and relationship cultivation</h3>
+                <p>
+                  Our team deploys high-volume yet carefully targeted campaigns using private email infrastructure and
+                  direct calling. Messaging evolves as data comes in. We pre-qualify interest, coordinate meetings and
+                  ensure your time is focused on high-signal conversations only.
+                </p>
+              </article>
+
+              <article class="step">
+                <div class="step-label">Step four</div>
+                <h3 class="step-title">Due diligence, negotiation and closing support</h3>
+                <p>
+                  For interested investors we prepare background notes, tailor meetings, assist with negotiations and
+                  support due diligence. You receive regular reporting and clear decision points at each stage.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="process-card">
+            <strong>What you can expect from the first two calls</strong>
+            <ul>
+              <li>Call one: discovery, discussion of investor groups and an honest view on whether we are a fit.</li>
+              <li>Internal work: initial investor mapping, a draft approach and fee outline.</li>
+              <li>Call two: review of scope, timelines, investor universe and next steps.</li>
+              <li>If aligned: final engagement agreement and onboarding with the backend team.</li>
+            </ul>
+            <p style="margin-top:0.7rem;">
+              At each step we aim for clarity. Either it makes sense to proceed together, or it does not. Both outcomes
+              are acceptable; the important thing is that the decision is informed.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">Fees</div>
+          <h2 class="section-title">Aligned economics, clearly explained.</h2>
+          <p class="section-description">
+            Our model combines an upfront engagement fee with a success-based fee. We only succeed fully when
+            your raise or transaction does.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="pricing-tagline">Engagement fees</div>
+            <div class="price-range">US$5,000 – US$25,000+</div>
+            <div class="price-note">Typically covering six to twelve months of work.</div>
+            <p>
+              Engagement fees reflect the depth and intensity of the mandate and usually cover:
+            </p>
+            <ul>
+              <li>A dedicated team lead with investment banking or venture capital experience.</li>
+              <li>An analyst pod to build and maintain investor or deal lists.</li>
+              <li>System build-out, including servers, domains and compliance requirements.</li>
+              <li>Ongoing optimisation of outreach scripts and regular reporting.</li>
+            </ul>
+            <p style="margin-top:0.6rem;font-size:0.8rem;color:var(--muted);">
+              The specific fee is proposed after the triage call once your objectives, timelines and existing
+              efforts are fully understood.
+            </p>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-tagline">Success-based fees</div>
+            <div class="price-range">0.5% – 4%</div>
+            <div class="price-note">On capital raised or transaction value.</div>
+            <p>
+              Back-end economics are structured to align our incentives with yours:
+            </p>
+            <ul>
+              <li>Fund distribution: generally between 0.5 and 1 per cent on capital raised.</li>
+              <li>Private equity and transaction work: usually 0.5 to 2.5 per cent on deal value.</li>
+              <li>Direct equity raises: typically between 4 and 6 per cent, with tiers for larger rounds.</li>
+            </ul>
+            <p style="margin-top:0.6rem;font-size:0.8rem;color:var(--muted);">
+              All terms are set out clearly in a draft engagement agreement and refined before onboarding.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="wrapper">
+        <div class="section-header">
+          <div class="section-label">Next steps</div>
+          <h2 class="section-title">Book a triage call with Riyal Capital.</h2>
+          <p class="section-description">
+            Share a snapshot of your fund or company, your current investor base and where you would like to be
+            in six to twelve months. We will review and come back to you with a clear view on fit.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <form>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" placeholder="Jane Doe" />
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" placeholder="name@firm.com" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="firm">Firm, fund or company</label>
+                <input id="firm" name="firm" type="text" placeholder="Entity name" />
+              </div>
+              <div class="field">
+                <label for="role">Role</label>
+                <input id="role" name="role" type="text" placeholder="Managing Partner, Chief Investment Officer, Chief Executive..." />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="mandate">Mandate type</label>
+                <select id="mandate" name="mandate">
+                  <option value="">Select one</option>
+                  <option value="hedge-fund">Hedge fund distribution</option>
+                  <option value="private-equity">Private equity and deal origination</option>
+                  <option value="raise">Company capital raise</option>
+                  <option value="other">Other or multi-strategy</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="size">Current AUM or target raise</label>
+                <input id="size" name="size" type="text" placeholder="For example: US$250m AUM targeting an additional US$100m" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="objective">Six to twelve month objective</label>
+              <input id="objective" name="objective" type="text" placeholder="For example: add five to ten institutional LPs, or close a Series B round." />
+            </div>
+
+            <div class="field">
+              <label for="message">What are you hoping to take away from this call?</label>
+              <textarea id="message" name="message" placeholder="Share context on your strategy, investor groups of interest, current efforts and timelines."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top:0.5rem;">
+              Submit and request a triage call
+            </button>
+            <p class="form-caption">
+              We will review your note, align internally on investor segments and respond with suggested times and
+              any materials that may be useful ahead of the call.
+            </p>
+          </form>
+
+          <aside class="contact-card">
+            <strong>What happens after you submit</strong>
+            <ul>
+              <li>We confirm whether your mandate is likely to be a good fit for our model.</li>
+              <li>You receive proposed times for a triage call and, if helpful, a short pre-read.</li>
+              <li>If both sides are aligned, we prepare a tailored strategy outline and a draft engagement agreement.</li>
+            </ul>
+            <dl>
+              <dt>Location</dt>
+              <dd>Brisbane, Australia, working with managers and companies globally.</dd>
+              <dt>Focus</dt>
+              <dd>Hedge funds, private equity firms and institutional capital raises.</dd>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrapper">
+      <span>© <span id="year"></span> Riyal Capital. All rights reserved.</span>
+      <nav aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
